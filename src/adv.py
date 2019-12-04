@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -39,13 +39,66 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+player = Player(room["outside"])
+
+while True:  # Loop
+    # Read
+    key = input("-> ")
+
+    possible_inputs = ['n', 's', 'e', 'w', 'q']
+    #
+    if key not in possible_inputs:
+        print("Not a valid key input, please enter: 'n', 's', 'e', 'w', or 'q'")
+    # North
+    elif key == "n":
+        if player.room.n_to == None:
+            print("Can't go that way")
+        else:
+            player_location = player.room.n_to
+            player = Player(player_location)
+            print(player.room)
+    # South
+    elif key == "s":
+        if player.room.s_to == None:
+            print("Can't go that way")
+        else:
+            player_location = player.room.s_to
+            player = Player(player_location)
+            print(player.room)
+    # East
+    elif key == "e":
+        if player.room.e_to == None:
+            print("Can't go that way")
+        else:
+            player_location = player.room.e_to
+            player = Player(player_location)
+            print(player.room)
+    # West
+    elif key == "w":
+        if player.room.w_to == None:
+            print("Can't go that way")
+        else:
+            player_location = player.room.w_to
+            player = Player(player_location)
+            print(player.room)
+
+    # Quit
+    elif key == "q":
+        # Break out of loop
+        print("Thanks for playing!")
+        break
+
+    print(player.room)
+
+    # Verify its one of the possible key entries
+
+    # REPL should accept "n", "s,", "e", "w", "q" commands
+
+    # Write a loop that:
+
+    # * Prints the current room name
+    # * Prints the current description (the textwrap module might be useful here).
+    # * Waits for user input and decides what to do.
+    #
+    # If the user enters a cardinal direction, attempt to move to the room there.
+    # Print an error message if the movement isn't allowed.
