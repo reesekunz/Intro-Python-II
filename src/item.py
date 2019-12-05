@@ -1,6 +1,6 @@
 # Item class to hold item information
 
-# General item class who's attributes (item name and item description) will be passed down to the item classes below
+# General item (base) class who's attributes (item name and item description) will be passed down to the item classes below
 
 
 class Item:

@@ -1,7 +1,9 @@
 from room import Room
 from player import Player
-from item import Item
+from item import Item, Attack, Defense, Magic, Health
 
+
+# Declare items
 # attack items = sword, bow, spear (item_name, item_description, attack_level) -> from Attack class attributes
 # defense items = shield, helmet (item_name, item_description, defense_level) -> from Defense class attributes
 # magic items = staff, wand (item_name, item_description, magic_level) -> from Magic class attributes
@@ -51,6 +53,23 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+
+# Add items to each room
+
+#item1 = Attack("Wildling sword", "Increases attack level by 3", 4)
+#room["outside"].room_items.item_name.append(item1)
+
+room['outside'].room_items = item["sword"]
+room['outside'].room_items = item["shield"]
+room['foyer'].room_items = item["bow"]
+room['foyer'].room_items = item["staff"]
+room['overlook'].room_items = item["spear"]
+room['overlook'].room_items = item["wand"]
+room['narrow'].room_items = item["shield"]
+room['narrow'].room_items = item["potion"]
+room['treasure'].room_items = item["helmet"]
+
 
 #
 # Main
