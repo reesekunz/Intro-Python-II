@@ -16,7 +16,7 @@ class Item:
 # Sword
 
 
-class Sword(Item):
+class Attack(Item):
     def __init__(self, item_name, item_description, attack_level):
         # Use super() to inherent item class attributes above
         super().__init__(item_name, item_description)
@@ -28,7 +28,7 @@ class Sword(Item):
 # Shield
 
 
-class Shield(Item):
+class Defense(Item):
     def __init__(self, item_name, item_description, defense_level):
         super().__init__(item_name, item_description)
         self.defense_level = defense_level
@@ -38,7 +38,7 @@ class Shield(Item):
 # Staff
 
 
-class Staff(Item):
+class Magic(Item):
     def __init__(self, item_name, item_description, magic_level):
         super().__init__(item_name, item_description)
         self.magic_level = magic_level
@@ -48,7 +48,7 @@ class Staff(Item):
 # Potion
 
 
-class Potion(Item):
+class Health(Item):
     def __init__(self, item_name, item_description, health_level):
         super().__init__(item_name, item_description)
         self.health_level = health_level

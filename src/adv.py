@@ -1,9 +1,27 @@
 from room import Room
 from player import Player
 from item import Item
-# Declare all the rooms
 
+# attack items = sword, bow, spear (item_name, item_description, attack_level) -> from Attack class attributes
+# defense items = shield, helmet (item_name, item_description, defense_level) -> from Defense class attributes
+# magic items = staff, wand (item_name, item_description, magic_level) -> from Magic class attributes
+# health items = potion, food (item_name, item_description, health_level) -> from Health class attributes
+item = {
+    # "any name": Class Being Referenced("attribute 1 inside class", "atrribute 2 inside class", "attribute 3 inside class")
+    "sword": Attack("Wildling sword", "Increases attack level by 3", 4),
+    "bow": Attack("bow & arrow", "Increases attack level by 2", 3),
+    "spear": Attack("wimpy spear", "Increases attack level by 1", 1),
+    "shield": Defense("Strong shield", "Increases defense level by 4", 4),
+    "helmet": Defense("Broken helmet", "Increases defense level by 2", 2),
+    "staff": Magic("magic staff", "Increases magic level by 2", 2),
+    "wand": Magic("Harry Potters wand", "Yur a wizard Harry. Increaes magic level by 5", 5),
+    "potion": Health("HP potion", "Restores health level by 30", 30),
+    "food": Health("Food", "Restores health level by 10", 10)
+}
+
+# Declare all the rooms
 room = {
+    # "any name": Class Being Referenced("attribute 1 inside class", "atrribute 2 inside class")
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
 
