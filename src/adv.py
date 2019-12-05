@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
@@ -40,42 +41,52 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 # player_name = input("Input player name")
 player = Player("Reese", room["outside"])
+# Write a loop that:
 
+# * Prints the current room name
+# * Prints the current description (the textwrap module might be useful here).
+# * Waits for user input and decides what to do.
+#
+# If the user enters a cardinal direction, attempt to move to the room there.
+# Print an error message if the movement isn't allowed.
+nogo = "Can't go that way"
 
 # def move():
-while True:  # Loop
-        # Read
-    key = input("-> ")
-
+while True:
+    # define input
+    key = input(
+        "Welcome to our adventure game! Press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit ")
+    # REPL should accept "n", "s,", "e", "w", "q" commands
     possible_inputs = ['n', 's', 'e', 'w', 'q']
-    #
+    # Verify its one of the possible key entries
     if key not in possible_inputs:
         print("Not a valid key input, please enter: 'n', 's', 'e', 'w', or 'q'")
     # North
     elif key == "n":
+        # None is what is declared in room.py
         if player.current_room.n_to == None:
-            print("Can't go that way")
+            print(nogo)
         else:
             move_player = player.current_room.n_to
             print(move_player)
     # South
     elif key == "s":
         if player.current_room.s_to == None:
-            print("Can't go that way")
+            print(nogo)
         else:
             move_player = player.current_room.s_to
             print(move_player)
     # East
     elif key == "e":
         if player.current_room.e_to == None:
-            print("Can't go that way")
+            print(nogo)
         else:
             move_player = player.current_room.e_to
             print(move_player)
     # West
     elif key == "w":
         if player.current_room.w_to == None:
-            print("Can't go that way")
+            print(nogo)
         else:
             move_player = player.current_room.w_to
             print(move_player)
@@ -88,15 +99,3 @@ while True:  # Loop
 
 
 # move()
-# Verify its one of the possible key entries
-
-# REPL should accept "n", "s,", "e", "w", "q" commands
-
-# Write a loop that:
-
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
