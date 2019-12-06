@@ -58,7 +58,7 @@ room['treasure'].s_to = room['narrow']
 # Add items to each room
 
 #item1 = Attack("Wildling sword", "Increases attack level by 3", 4)
-#room["outside"].room_items.item_name.append(item1)
+# room["outside"].room_items.item_name.append(item1)
 
 room['outside'].room_items = item["sword"]
 room['outside'].room_items = item["shield"]
@@ -86,50 +86,67 @@ player = Player("Reese", room["outside"])
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-nogo = "Can't go that way"
+# def pickup_item
+no_go = "Can't go that way"
+inspect_room = "Press 'i' to inspect room for items"
+
 
 # def move():
 while True:
     # define input
     key = input(
-        "Welcome to our adventure game! Press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit ")
+        "Welcome to our adventure game! To get started press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit ")
     # REPL should accept "n", "s,", "e", "w", "q" commands
-    possible_inputs = ['n', 's', 'e', 'w', 'q']
+    possible_inputs = ['n', 's', 'e', 'w', 'q', 'i', 'a']
     # Verify its one of the possible key entries
     if key not in possible_inputs:
-        print("Not a valid key input, please enter: 'n', 's', 'e', 'w', or 'q'")
+        print("Not a valid key input, please enter: 'n', 's', 'e', 'w', 'i' or 'q'")
     # North
     elif key == "n":
         # None is what is declared in room.py
         if player.current_room.n_to == None:
-            print(nogo)
+            print(no_go)
         else:
             move_player = player.current_room.n_to
             print(move_player)
+            print(inspect_room)
+
     # South
     elif key == "s":
         if player.current_room.s_to == None:
-            print(nogo)
+            print(no_go)
         else:
             move_player = player.current_room.s_to
             print(move_player)
+            print(inspect_room)
     # East
     elif key == "e":
         if player.current_room.e_to == None:
-            print(nogo)
+            print(no_go)
         else:
             move_player = player.current_room.e_to
             print(move_player)
+            print(inspect_room)
     # West
     elif key == "w":
         if player.current_room.w_to == None:
-            print(nogo)
+            print(no_go)
         else:
             move_player = player.current_room.w_to
             print(move_player)
+            print(inspect_room)
+
+    elif key == "i":
+
+        print("You found:", player.current_room.room_items)
+
+    elif key == "a":
+
+        print(player.current_room)
 
     # Quit
     elif key == "q":
+
         # Break out of loop
         print("Thanks for playing!")
         break
