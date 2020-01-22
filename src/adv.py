@@ -1,8 +1,9 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
+    # "any name": Class Being Referenced("attribute 1 inside class" - room_name, "atrribute 2 inside class" - room_description)
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
 
@@ -38,14 +39,57 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player("Reese", room["outside"])
+print(player)
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
+
+# PLANNING
 # If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
+# carindal direction inputs = n, s, e, w
+# valid inputs = n, s, e, w, q
+# if key isnt a valid input, print an error
 # If the user enters "q", quit the game.
+
+while True:
+    key = input(
+        "Welcome! To get started press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit ")
+    possible_inputs = ['n', 's', 'e', 'w', 'q']
+
+    if key not in possible_inputs:
+        print("Not a valid key input, please enter: 'n', 's', 'e', 'w', or 'q'")
+# North
+    elif key == "n":
+        # Can either not go more north
+        if player.current_room.n_to == None:
+            print("Cant go that way")
+        # Or can go north to another room
+        else:
+            room = player.current_room.n_to
+            print(room)
+# South
+    elif key == "s":
+        # Can either not go more south
+        if player.current_room.s_to == None:
+            print("Cant go that way")
+        # Or can go north to another room
+        else:
+            next_room = player.current_room.s_to
+            print(next_room)
+# East
+    elif key == "e":
+        if player.current_room.e_to == None:
+            print("Cant go that way")
+        else:
+            next_room = player.current_room.e_to
+            print(next_room)
+# West
+    elif key == "w":
+        if player.current_room.w_to == None:
+            print("Cant go that way")
+        else:
+            next_room = player.current_room.w_to
+            print(next_room)
+# Quit
+    elif key == "q":
+        print("Bye bye")
+        break  # Break out of loop
