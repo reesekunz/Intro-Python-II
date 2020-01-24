@@ -34,61 +34,61 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
-# Main
-#
-
 # Make a new player object that is currently in the 'outside' room.
 player = Player("Reese", room["outside"])
-print(player)
+# Reese is currently in Room: Outside Cave Entrance. Room description: North of you, the cave mount beckons
+print("player", player)
 
-
-# PLANNING
-# If the user enters a cardinal direction, attempt to move to the room there.
-# carindal direction inputs = n, s, e, w
-# valid inputs = n, s, e, w, q
-# if key isnt a valid input, print an error
-# If the user enters "q", quit the game.
+# Room: Outside Cave Entrance. Room description: North of you, the cave mount beckons
+# print("player.current_room", player.current_room)
+# print("player.player_name", player.player_name)  # Reese
+# print("player.current_room.room_name",
+#       player.current_room.room_name)  # Outside Cave Entrance
+# print("player.current_room.room_description",
+#       player.current_room.room_description)  # North of you, the cave mount beckons
 
 while True:
     key = input(
-        "Welcome! To get started press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit ")
+        "Press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit")
     possible_inputs = ['n', 's', 'e', 'w', 'q']
 
     if key not in possible_inputs:
         print("Not a valid key input, please enter: 'n', 's', 'e', 'w', or 'q'")
 # North
     elif key == "n":
-        # Can either not go more north
-        if player.current_room.n_to == None:
-            print("Cant go that way")
-        # Or can go north to another room
+        if player.current_room.n_to is not None:
+            player.current_room = player.current_room.n_to
+            print("***player.current_room***", player.current_room)
         else:
-            room = player.current_room.n_to
-            print(room)
+            print("Cant go that way")
+
+
 # South
     elif key == "s":
-        # Can either not go more south
-        if player.current_room.s_to == None:
-            print("Cant go that way")
-        # Or can go north to another room
+        if player.current_room.s_to is not None:
+            player.current_room = player.current_room.s_to
+            print("***player.current_room***", player.current_room)
         else:
-            next_room = player.current_room.s_to
-            print(next_room)
+            print("Cant go that way")
+
+
 # East
     elif key == "e":
-        if player.current_room.e_to == None:
-            print("Cant go that way")
+        if player.current_room.e_to is not None:
+            player.current_room = player.current_room.s_to
+            print("***player.current_room***", player.current_room)
         else:
-            next_room = player.current_room.e_to
-            print(next_room)
+            print("Cant go that way")
+
 # West
     elif key == "w":
-        if player.current_room.w_to == None:
-            print("Cant go that way")
+        if player.current_room.w_to is not None:
+            player.current_room = player.current_room.w.to
+            print("***player.current_room***", player.current_room)
         else:
-            next_room = player.current_room.w_to
-            print(next_room)
+            print("Cant go that way")
+
+
 # Quit
     elif key == "q":
         print("Bye bye")
