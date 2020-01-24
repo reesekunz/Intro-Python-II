@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item, Attack, Defense, Magic, Health
 # Declare all the rooms
 
 room = {
