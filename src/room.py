@@ -10,6 +10,7 @@ class Room:
         self.e_to = None
         self.s_to = None
         self.w_to = None
+        self.room_items = []
 
     def __str__(self):
         return f"Room: {self.room_name}. Room description: {self.room_description}"
