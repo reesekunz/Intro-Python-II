@@ -81,7 +81,7 @@ print("player", player)
 while True:
     key = input(
         "Press 'n' to go north, 's' for south, 'e' for east, 'w' for west, or 'q' to quit")
-    possible_inputs = ['n', 's', 'e', 'w', 'q', 'i']
+    possible_inputs = ['n', 's', 'e', 'w', 'q', 'i', '1', '2', 'r']
 
     if key not in possible_inputs:
         print("Not a valid key input, please enter: 'n', 's', 'e', 'w', 'q', or 'i")
@@ -131,4 +131,25 @@ while True:
 
 # Inspect room for items
     elif key == "i":
-        print(f'You found: {player.current_room.room_items}')
+        if player.current_room.room_items is not None:
+            print(f'You found: {player.current_room.room_items}')
+            print("Would you like to equip? 1 to equip / 2 for no")
+        else:
+            print("No items in this room, sorry dood")
+
+# Adding item to inventory
+    elif key == "1":
+        player.inventory.append(player.current_room.room_items.item_name)
+        print("***player.inventory***", player.inventory)
+        print(
+            f"{player.current_room.room_items.item_name} successfully added to inventory. To remove item, press r")
+
+    elif key == "2":
+        pass
+
+# Remove item from inventory
+    elif key == "r":
+        player.inventory.remove(player.current_room.room_items.item_name)
+        print("player inventory", player.inventory)
+        print(
+            f"{player.current_room.room_items.item_name} successfully removed from inventory.")
